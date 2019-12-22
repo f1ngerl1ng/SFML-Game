@@ -27,12 +27,13 @@ private:
 		sf::IntRect currentRect;
 		sf::IntRect endRect;
 
-		Animation(sf::Sprite sprite, sf::Texture& textureSheet,
-			float animationTimer, 
+		Animation(sf::Sprite& sprite, sf::Texture& textureSheet,
+			float animation_timer, 
 			int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int height)
 			: sprite(sprite), textureSheet(textureSheet), 
-			animationTimer(animationTimer), width(width), height(height)
+			animationTimer(animation_timer), width(width), height(height)
 		{
+			this->timer = 0.f;
 			this->startRect = sf::IntRect(start_frame_x * width, start_frame_y, width, height);
 			this->currentRect = this->startRect;
 			this->endRect = sf::IntRect(frames_x * width, frames_y * height, width, height);
@@ -45,7 +46,7 @@ private:
 		void play(const float& dt)
 		{
 			// Update timer
-			this->timer = 10.f * dt;
+			this->timer += 100.f * dt;
 			if (this->timer >= this->animationTimer)
 			{
 				//reset timer
@@ -74,7 +75,7 @@ private:
 	std::map<std::string, Animation*> animations;
 
 public:
-	AnimationComponent(sf::Sprite sprite, sf::Texture& texture_sheet);
+	AnimationComponent(sf::Sprite& sprite, sf::Texture& texture_sheet);
 	virtual ~AnimationComponent();
 
 	//Functions
