@@ -19,8 +19,8 @@ Entity::~Entity()
 // Component functions
 void Entity::setTexture(sf::Texture& texture)
 {
-	this->sprite.setTexture(texture);
-	this->sprite.setTextureRect(sf::IntRect(139.16f, 324.5f, 139.16f, 324.5f));
+	/*this->sprite.setTexture(texture);
+	this->sprite.setTextureRect(sf::IntRect(139.16f, 324.5f, 139.16f, 324.5f));*/
 }
 
 void Entity::createMovementComponent(const float maxVelocity, 
